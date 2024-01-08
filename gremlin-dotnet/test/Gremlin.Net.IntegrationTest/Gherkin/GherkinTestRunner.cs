@@ -114,6 +114,14 @@ namespace Gremlin.Net.IntegrationTest.Gherkin
                         continue;
                     }
 
+                    // if a lambda is present then the Gremlin isn't translated and thus not supported - until we
+                    // officially get rid of this stuff
+                    if (Gremlin.HasTraversal(scenario.Name))
+                    {
+                        failedSteps.Add(scenario.Steps.First(), new IgnoreException(IgnoreReason.NoReason));
+                        continue;
+                    }
+
                     StepBlock? currentStep = null;
                     StepDefinition? stepDefinition = null;
                     foreach (var step in scenario.Steps)
