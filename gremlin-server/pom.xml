@@ -32,7 +32,7 @@ limitations under the License.
         -->
         <maven.exec.skip>false</maven.exec.skip> <!-- default -->
         <skipImageBuild>${maven.exec.skip}</skipImageBuild>
-        <docker.platforms>linux/amd64,linux/arm64/v8</docker.platforms>
+        <docker.platforms>linux/amd64,linux/arm64</docker.platforms>
     </properties>
     <dependencies>
         <dependency>
@@ -188,7 +188,7 @@ limitations under the License.
                                 <argument>--build-arg</argument>
                                 <argument>GREMLIN_SERVER_DIR=target/apache-tinkerpop-${project.artifactId}-${project.version}-standalone</argument>
                                 <argument>-t</argument>
-                                <argument>tinkerpop/gremlin-server:${project.version}</argument>
+                                <argument>airspeed/gremlin-server:${project.version}</argument>
                                 <argument>.</argument>
                             </arguments>
                         </configuration>
@@ -222,7 +222,7 @@ limitations under the License.
                     <configuration>
                         <images>
                             <image>
-                                <name>tinkerpop/gremlin-server:${project.version}</name>
+                                <name>airspeed/gremlin-server:${project.version}</name>
                                 <build>
                                     <dockerFile>${project.build.directory}/../Dockerfile</dockerFile>
                                     <args>
